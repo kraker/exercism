@@ -1,0 +1,25 @@
+import java.math.BigInteger;
+
+class Grains {
+
+    BigInteger grainsOnSquare(final int square) {
+        if (square < 1) {
+            throw new IllegalArgumentException("square must be between 1 and 64");
+        }
+        if (square > 64) {
+            throw new IllegalArgumentException("square must be between 1 and 64");
+        }
+
+        BigInteger seed = new BigInteger("2");
+        return seed.pow(square - 1);
+    }
+
+    BigInteger grainsOnBoard() {
+        BigInteger grainsOnBoard = new BigInteger("0");
+        for (int i = 64; i > 0; i--) {
+            grainsOnBoard = grainsOnBoard.add(grainsOnSquare(i));
+        }
+        return grainsOnBoard;
+    }
+
+}
